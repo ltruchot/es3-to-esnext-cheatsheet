@@ -1,10 +1,10 @@
 # ES3 to ESNext Cheatsheet
 
-## Controle structures
+## Control structures
 
 ### Conditional
 
-- classic: `if (cond) { ... } else if (cond) { ... } else { ...}`
+- classic: `if (cond) { ... } else if (cond) { ... S} else { ...}`
 - ternary: `var x = cond ? true : false;`
 - error handling: `try {} catch (err) { ... }`
 - operators: `||`, `&&`, `!`, `===`, `!==`, `<=`...
@@ -36,13 +36,13 @@
 
 Javascript is a loosely and dynamicaly typed languages: 
 
-- 3 primitives: string ('' / "" / ``(es6)), boolean (true / false), number (42 / 78.98)
+- 3 primitives: string (`''` / `""` / \`\` (es6)), boolean (`true` / `false`), number (`42` / `78.98`)
 - 1 composed: Object (Objects, Arrays, Functions, Date, RegExp, etc.)
-- 3 empty: undefined, null, NaN
-- 6 falsy values : false, 0, "", NaN, undefined, null
+- 3 empty: `undefined`, `null`, `NaN`
+- 6 falsy values : `false`, `0`, `""`, `NaN`, `undefined`, `null`
 
 ### Further considerations
-- *Primitives* are passed by *copy* (new values) / *Objects* are passed/shared by *reference* (pointing to the same memory space)
+- **Primitives** are passed by **copy** (new values) / **Objects** are passed/shared by **reference** (pointing to the same memory space)
 - scope of `var` is the current `function` and all descending blocks and functions. Don't use`var`with ES6 since it's lack of precision.
 - scope of `const`/`let` is the current block and all descending blocks and functions.
 
@@ -59,7 +59,7 @@ function add (a, b) {
 // anonymous function, stored in a variable
 const add = function () {
     return a + b;
-}
+};
 
 // arrow function
 const add = (a, b) => a + b;
@@ -78,14 +78,14 @@ An important part of the window object is `window.document` that represent the H
 ```javascript
 const divToto = document.getElementById("toto"); 
 const h1 = document.querySelector("h1");
-h1.innerText = "Toto is a cool name."
+h1.innerText = "Toto is a cool name.";
 divToto.innerHTML = "<p>That's true.</p>";
 divToto.appendChild(document.createElement("ul"));
 const ul0 = divToto.querySelectorAll("ul")[0];
 document.body.addEventListener("click", (e) => e.targe.style.color = "blue");
 ```
 
-An other important method is `fetch` that help us to do AJAX request
+An other important method is `fetch` that help us to do AJAX request and return a Promise (thenable object)
 
 ## Callbacks and Currying
 
