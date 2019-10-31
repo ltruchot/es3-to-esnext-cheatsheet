@@ -1,5 +1,14 @@
 # ES3 to ESNext Cheatsheet
 
+## General
+
+- **history**: invented in 1995 by Brendan Eich, for Netscape.
+- **owner/maintainer**: ECMAScript 
+- **paradigm**: Functional > Procedural > OOP
+- **strongly** typed: no
+- **memory** management: callstack + garbage collector
+
+
 ## Control structures
 
 ### Conditional
@@ -13,8 +22,16 @@
 
 - classic: `while (cond) { ... }`
 - with counter: `for (let i = 0; i < 3; i++) { ... }`
-- lists only: `const arr = [1, 2, 3]; for (let el of arr) { ... }`
-- object only: `const obj = {a: 1, b: 2}; for (let key of obj) { ...}`
+- lists only: 
+```javascript 
+const arr = [1, 2, 3]; 
+for (let el of arr) { ... }
+```
+- object only: 
+```javascript
+const obj = {a: 1, b: 2}; 
+for (let key in obj) { ...}
+```
 
 ## Data structures
 
@@ -22,19 +39,33 @@
 - variables: `var x = 3;`, `let y = 4;` (es6), `const z = 5;` (es6)
 - list/array: `const arr = [1, 2, 3];`
 - object: `const obj = {a: 1, b: 2};`
-- collections: `const coll = [{ nom: "toto", age: 12}, {nom: "titi", age: 21}]` AKA array of similar objects formatted
+- collections, AKA array of similar objects formatted: 
+```javascript
+const coll = [
+  { nom: "toto", age: 12 }, 
+  { nom: "titi", age: 21 }
+];
+```
 
 ### Important Array methods
-`const arr = [1, 2, 3];`
+```
+const arr = [1, 2, 3];
+```
 - `arr.push(4)` to add an item
 - `arr.forEach(console.log)` to loop
-- `arr.filter(a => a < 10)` to reject some values
-- `arr.find(a => a === 2);` to find a value 
-- `arr.map(a => a * 2)` to transform all values
-- `arr.reduce((a,b) => a + b, 0));` to aggegate all values
+- `arr.find(a => a === 2);` to find a value (return the firte found)
+- `arr.filter(a => a < 10)` to reject some values (immutable*)
+- `arr.map(a => a * 2)` to transform all values (immutable*)
+- `arr.concat([5, 6, 7]);` to combines arrays (immutable*)
+- `arr.reduce((a,b) => a + b, 0));` to aggregate all values
+
+
+
+* immutables methodes don't modify the original array: they just return a new one, and you can chain them
+
 ### Types
 
-Javascript is a loosely and dynamicaly typed languages: 
+Javascript is a loosely and dynamically typed languages: 
 
 - 3 primitives: string (`''` / `""` / \`\` (es6)), boolean (`true` / `false`), number (`42` / `78.98`)
 - 1 composed: Object (Objects, Arrays, Functions, Date, RegExp, etc.)
@@ -104,8 +135,10 @@ const logViolet = log("violet");
 logViolet("toto");
 logViolet("titi")
 ```
+
 ## ES6 to ESNext
-Some feature of JavaScript are not fully implemented in all browsers. To use them, we need a *seed* or at least a tool like *babel*, *typescript* or *webpack* (sometimes we combine them) 
+
+Some feature of JavaScript are not fully implemented in all browsers. To use them, we need a *seed** or at least a tool like *babel*, *typescript* or *webpack* (sometimes we combine them) 
 
 - `import` and `export`
 ```javascript
@@ -121,6 +154,8 @@ console.log(str)
 - `const { name } = person;` that extract the property name of the person object
 - `class` that emulate OOP paradigm
 - `async` and `await` to manage Promises
+
+*seed example: https://github.com/ltruchot/webpack-seed-js-sass
 
 ## Other important constructors / static objects 
 - Math, JSON, Date, Promise, RegExp, Set, Map, XMLHttpRequest...
