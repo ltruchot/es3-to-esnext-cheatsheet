@@ -4,30 +4,30 @@
 
 - **history**: invented in 1995 by Brendan Eich, for Netscape.
 - **owner/maintainer**: ECMAScript 
-- **paradigm**: Functional > Procedural > OOP
-- **strongly** typed: no
-- **memory** management: callstack + garbage collector
+- **paradigms**: Functional > Procedural > OOP
+- **strongly typed**: no
+- **memory management**: callstack + garbage collector
 
 
 ## Control structures
 
 ### Conditional
 
-- classic: `if (cond) { ... } else if (cond) { ... S} else { ...}`
+- classic: `if (cond) { ... } else if (cond) { ... } else { ... }`
 - ternary: `var x = cond ? true : false;`
 - error handling: `try {} catch (err) { ... }`
 - operators: `||`, `&&`, `!`, `===`, `!==`, `<=`...
 
 ### Looping
 
-- classic: `while (cond) { ... }`
+- basic: `while (cond) { ... }`
 - with counter: `for (let i = 0; i < 3; i++) { ... }`
 - lists only: 
 ```javascript 
 const arr = [1, 2, 3]; 
 for (let el of arr) { ... }
 ```
-- object only: 
+- objects only: 
 ```javascript
 const obj = {a: 1, b: 2}; 
 for (let key in obj) { ...}
@@ -37,8 +37,17 @@ for (let key in obj) { ...}
 
 ### Classics
 - variables: `var x = 3;`, `let y = 4;` (es6), `const z = 5;` (es6)
-- list/array: `const arr = [1, 2, 3];`
-- object: `const obj = {a: 1, b: 2};`
+- lists (including arrays/queues/stacks/matrix/collections): `const arr = [1, 2, 3];`
+- object (including dictionnaries): 
+```javascript
+const obj = {
+  a: 1, 
+  b: "toto",
+  c () {
+    console.log(this.a, this.b);
+  }
+};
+```
 - collections, AKA array of similar objects formatted: 
 ```javascript
 const coll = [
@@ -51,14 +60,13 @@ const coll = [
 ```
 const arr = [1, 2, 3];
 ```
-- `arr.push(4)` to add an item
-- `arr.forEach(console.log)` to loop
-- `arr.find(a => a === 2);` to find a value (return the firte found)
-- `arr.filter(a => a < 10)` to reject some values (immutable*)
+- `arr.push(4)` to add an item (@see also `pop`, `unshift`, `shift`)
+- `arr.forEach(console.log)` to loop, running the same function for each elements one by one
+- `arr.find(a => a === 2);` return the first found (when the function return a truthy value)
+- `arr.filter(a => a < 10)` to keep only some values (immutable*)
 - `arr.map(a => a * 2)` to transform all values (immutable*)
-- `arr.concat([5, 6, 7]);` to combines arrays (immutable*)
+- `arr.concat([5, 6, 7]);` to combine arrays (immutable*)
 - `arr.reduce((a,b) => a + b, 0));` to aggregate all values
-
 
 
 * immutables methodes don't modify the original array: they just return a new one, and you can chain them
