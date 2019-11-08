@@ -8,7 +8,6 @@
 - **strongly typed**: no
 - **memory management**: callstack + garbage collector
 
-
 ## Control structures
 
 ### Conditional
@@ -69,7 +68,7 @@ const arr = [1, 2, 3];
 - `arr.reduce((a,b) => a + b, 0));` to aggregate all values
 
 
-* immutables methodes don't modify the original array: they just return a new one, and you can chain them
+* immutables methodes don't modify the original array: they just return a new one, so you can chain them
 
 ### Types
 
@@ -81,7 +80,8 @@ Javascript is a loosely and dynamically typed languages:
 - 6 falsy values : `false`, `0`, `""`, `NaN`, `undefined`, `null`
 
 ### Further considerations
-- **Primitives** are passed by **copy** (new values) / **Objects** are passed/shared by **reference** (pointing to the same memory space)
+- **Primitives** are passed by **copy** (new values)
+- **Objects** are passed/shared by **reference** (pointing to the same memory space)
 - scope of `var` is the current `function` and all descending blocks and functions. Don't use`var`with ES6 since it's lack of precision.
 - scope of `const`/`let` is the current block and all descending blocks and functions.
 
@@ -105,11 +105,11 @@ const add = (a, b) => a + b;
 ```
 - 1 way to run/execute it: `add(1, 2)`
 - functions are *first class* in javascript: they can be passed as "values", as arguments, returned by other functions or stored in variables
-- javascript is a functional language: prefer *pure unary functions* when possible, to produce a well made code
+- javascript is a functional language: prefer *pure unary functions* when possible
 
 ## window object
 
-Browsers provides use a very useful object to control the window. It's named `window` and si the global scope as well
+Browsers provides use a very useful object to control the window. It's named `window` and it's the global scope as well
 - `window.console === console // true`
 - `alert("toto"); prompt("what is your name ?");`
 
@@ -124,7 +124,15 @@ const ul0 = divToto.querySelectorAll("ul")[0];
 document.body.addEventListener("click", (e) => e.targe.style.color = "blue");
 ```
 
-An other important method is `fetch` that help us to do AJAX request and return a Promise (thenable object)
+An other important method is `fetch`, that help us to do AJAX request and return a Promise (thenable object)
+
+## Other important constructors / static objects 
+
+- **Math**, ex: `Math.random()`, `Math.max(1, 10, 100)`, `Math.round(4.95)`
+- **JSON**, ex: `JSON.parse('{"result":true, "count":42}')`, `JSON.stringify({ x: 5, y: 6 })`
+- **Date**, ex: `(new Date()).getFullYear()`, `Date.now()`
+- **Promise**, ex: `new Promise((resolve) => resolve("toto"))`, `Promise.resolve().then(...)`, `Promise.all([get(...), post(...)]).then(...)`
+- RegExp, Set, Map, XMLHttpRequest...
 
 ## Callbacks and Currying
 
@@ -146,7 +154,9 @@ logViolet("titi")
 
 ## ES6 to ESNext
 
-Some feature of JavaScript are not fully implemented in all browsers. To use them, we need a *seed** or at least a tool like *babel*, *typescript* or *webpack* (sometimes we combine them) 
+Next features are not fully implemented in all browsers. 
+
+WARNING: To use them, we need tools like *babel*, *typescript* or *webpack* (we can combine them as a **seed**) 
 
 - `import` and `export`
 ```javascript
@@ -165,16 +175,14 @@ console.log(str)
 
 *seed example: https://github.com/ltruchot/webpack-seed-js-sass
 
-## Other important constructors / static objects 
-- Math, JSON, Date, Promise, RegExp, Set, Map, XMLHttpRequest...
 
 ## Important dependencies
 
-Most of the dependencies should be added with `npm` in a seed or any node project: `npm install jquery --save`
+Most of the dependencies should be added with `NPM`: `npm install jquery --save`
 
 ### Frameworks
 - **Angular**: the big one to do everything, complex and written in TypeScript
-- **React**: the light one, very powerful, functional oriented and very classic JS friendly
+- **React**: the light one, very powerful, functional oriented and JS friendly
 - **Vue**: between the two others
 
 ### Libraries
@@ -183,6 +191,6 @@ Most of the dependencies should be added with `npm` in a seed or any node projec
 - **moment**: control the Dates
 - **ramda**: Functional Programming helpers
 - **lodash**: control Arrays and Objects
-- **webpack**: create good seeds
+- **webpack**: create good seeds and project scaffolding
 
 
